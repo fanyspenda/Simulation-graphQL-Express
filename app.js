@@ -9,6 +9,18 @@ var usersRouter = require("./routes/users");
 const expressGraphql = require("express-graphql");
 const alumniSchema = require("./graphql/schema/alumni");
 const alumniResolver = require("./graphql/resolver/alumni");
+const mongoose = require("mongoose");
+const url = `mongodb://localhost:27017/siAlumni`;
+const connect = mongoose.connect(url);
+
+connect.then(
+  db => {
+    console.log(`connected to Database`);
+  },
+  err => {
+    console.log(`error connected t{o database: ${err}`);
+  }
+);
 
 var app = express();
 
